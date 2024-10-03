@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Formulario de Registro e Inicio de Sesión</title>
+    <style>
+        .navbar {
+            background-color: #4CAF50; /* Color verde saludable */
+        }
+        .navbar-nav .nav-link {
+            color: white; /* Color del texto */
+        }
+        .navbar-nav .nav-link:hover {
+            color: #FFC107; /* Color amarillo al pasar el ratón */
+        }
+        body {
+            padding-top: 20px; /* Espacio encima del formulario */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="../perfil_usuario/index.html">Recetas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Noticias/cards.html">Noticas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacto">Contacto</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../perfil publico/formInicioSesion.html">Mi cuenta</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h2 class="text-center">Crear Usuario</h2>
+    <form>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" class="form-control" id="apellido" placeholder="Ingresa tu apellido" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Ingresa tu email" required>
+        </div>
+        <div class="form-group">
+            <label for="contrasena">Contraseña</label>
+            <input type="password" class="form-control" id="contrasena" placeholder="Ingresa tu contraseña" required>
+        </div>
+        <div class="form-group">
+            <label for="repetirContrasena">Repetir Contraseña</label>
+            <input type="password" class="form-control" id="repetirContrasena" placeholder="Repite tu contraseña" required>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Crear Usuario</button>
+        </div>
+    </form>
+    
+
+
+   
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
