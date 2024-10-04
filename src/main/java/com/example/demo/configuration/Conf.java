@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.configuration;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.*;
@@ -12,6 +12,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @PropertySource(
@@ -45,6 +46,7 @@ public class Conf {
         em.setDataSource(dataSource());
         em.setPackagesToScan("com.example.model.db");
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        em.setJpaProperties(additionalProperties());
         em.setJpaVendorAdapter(vendorAdapter);
         return em;
     }
@@ -62,4 +64,11 @@ public class Conf {
         ds.setPassword(environment.getRequiredProperty("spring.datasource.password"));
         return ds;
     }
+
+    private Properties additionalProperties(){
+        Properties prop = new Properties();
+        prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        return prop;
+    }
+
 }
