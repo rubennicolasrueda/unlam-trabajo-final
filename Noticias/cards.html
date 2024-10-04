@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap5</title>
+<!-- CDN VERSION LOCAL    <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+<!-- CDN VERSION INTERNET --><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<style>
+    .navbar {
+        background-color: #4CAF50; /* Color verde saludable */
+    }
+    .navbar-nav .nav-link {
+        color: white; /* Color del texto */
+    }
+    .navbar-nav .nav-link:hover {
+        color: #FFC107; /* Color amarillo al pasar el ratón */
+    }
+    body {
+        padding-top: 20px; /* Espacio encima del formulario */
+    }
+</style>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../perfil_usuario/index.html">Recetas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Noticias/cards.html">Noticias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../perfil publico/formInicioSesion.html">Mi cuenta</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col">
+                  <div class="card">
+                    <div class="card-body">
+                        <h1>Consejos de Salud para cuidarte mejor</h1>
+                        
+                    </div>
+                  </div>
+                        
+                       
+                  
+            </div>       
+
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" src="img1.jpg" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Enriquece tu dieta</h5>
+                        
+                        <p class="card-text">Beneficios de comer frutas de temporada y como incorporarlas en tus recetas diarias</p>
+                        <button
+                            class="btn btn-primary btn-lg"
+                            data-bs-toggle="modal"
+                            data-bs-target="#mi-modal-1"
+                        >Ver mas
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+<!-- CDN VERSION INTERNET --> 
+
+            <div class="modal fade" id="mi-modal-1" tabindex="-1" aria-hidden="true" aria-labelledby="label-modal-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title">Beneficios de comer frutas de temporada y cómo incorporarlas en tus recetas diarias</h1>
+                            <button class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        
+                        <div class="modal-body">
+                            <h5>Las frutas de temporada son recolectadas en su punto óptimo de maduración, lo que significa que han tenido el tiempo adecuado para desarrollar todo su potencial nutricional. Al no requerir largos periodos de almacenamiento o transporte, estas frutas mantienen niveles más altos de vitaminas, minerales y antioxidantes en comparación con las frutas fuera de temporada.
+
+                                Por ejemplo, las fresas de primavera no solo tienen un sabor más dulce y una textura más firme, sino que también contienen mayores concentraciones de vitamina C y antioxidantes. Consumir frutas en su momento adecuado asegura que estamos obteniendo el máximo beneficio nutricional de cada bocado.
+                                
+                                Además, el sabor y la textura de las frutas de temporada son incomparables. Las frutas que han madurado naturalmente al sol tienen una dulzura y aroma que no pueden ser replicados en frutas cultivadas en invernaderos o recolectadas antes de tiempo para soportar largos viajes. Esto no solo mejora nuestra experiencia culinaria, sino que también puede incentivar un mayor consumo de frutas, contribuyendo a una dieta más saludable.</h5>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                           
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+<!-- CDN VERSION INTERNET --> 
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-bottom" src="img2.jpg" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">A Examen</h5>
+                        
+                        <p class="card-text">Aceite de CBD: Legalidad, Usos y Beneficios para la salud</p>
+                        <button
+                            class="btn btn-primary btn-lg"
+                            data-bs-toggle="modal"
+                            data-bs-target="#mi-modal-2"
+                        >Ver mas
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- CDN VERSION INTERNET --> 
+
+            <div class="modal fade" id="mi-modal-2" tabindex="-1" aria-hidden="true" aria-labelledby="label-modal-2">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title">Aceite de CBD: Legalidad, Usos y Beneficios para la Salud</h1>
+                            <button class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        
+                        <div class="modal-body">
+                            <h5>El aceite de CBD se ha vuelto cada vez más popular en los últimos años debido a sus múltiples beneficios para la salud. Aunque se necesita más investigación para comprender plenamente sus efectos, los estudios preliminares han mostrado resultados prometedores en diversas áreas de la salud y el bienestar.
+                                Alivio del dolor: Uno de los beneficios más conocidos del aceite de CBD son sus propiedades analgésicas y antiinflamatorias. Un estudio en animales del European Journal of Pain sugiere que el cannabidiol podría ayudar a reducir el dolor y la inflamación debidos a la artritis cuando se aplica sobre la piel. Además, otras investigaciones afirman que el CBD puede inhibir el dolor inflamatorio y neuropático, que son difíciles de tratar.
+                                Ansiedad y depresión: Muchas personas consumen aceite de CBD para tratar los síntomas de la ansiedad y la depresión. El cannabidiol tiene la capacidad de interactuar con los receptores de serotonina en el cerebro, contribuyendo a mejorar el estado de ánimo y aliviar el estrés.
+                                Sueño e insomnio: Los estudios sugieren que el aceite de CBD puede ayudar tanto a conciliar el sueño como a combatir el insomnio y otros trastornos del sueño, en parte al ayudar a abordar el dolor crónico y la ansiedad.
+                                Propiedades neuroprotectoras: Numerosos estudios han explorado los efectos neuroprotectores del cannabis. Algunos de ellos han demostrado resultados positivos, indicando los beneficios potenciales del cannabidiol en la reducción de la frecuencia de las convulsiones, la reducción de la espasticidad y el dolor en la esclerosis múltiple, y el alivio de los síntomas en las enfermedades neurodegenerativas.</h5>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                           
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- CDN VERSION INTERNET --> 
+
+
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-bottom" src="img3.jpg" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Tesoro de Nutrientes</h5>
+                        <p class="card-text">¿Son las manzanas el secreto de una vida mas saludable?</p>
+                        <button
+                            class="btn btn-primary btn-lg"
+                            data-bs-toggle="modal"
+                            data-bs-target="#mi-modal-3"
+                        >Ver mas
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+
+        <!-- CDN VERSION INTERNET --> 
+
+        <div class="modal fade" id="mi-modal-3" tabindex="-1" aria-hidden="true" aria-labelledby="label-modal-3">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">¿Son las manzanas el secreto para una vida saludable?</h1>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <h5>Previene el Estreñimiento: Su alto contenido en fibra favorece el tránsito intestinal y ayuda a la digestión de las grasas.
+                            Poder Antioxidante: Las manzanas contienen antioxidantes como la quercetina y la vitamina C, que protegen las células contra los daños de los radicales libres.
+                            Mejora el Sistema Inmune: Gracias a su riqueza en nutrientes esenciales, contribuyen a fortalecer las defensas del cuerpo.
+                            Favorece el Bienestar: Consumir manzanas puede mejorar el estado de ánimo y contribuir a una sensación general de bienestar.
+                            Perfecto para Hacer Dieta: Bajas en calorías y ricas en fibras, las manzanas son un excelente snack para quienes buscan controlar o reducir su peso.
+                            Es Muy Nutritiva: Las manzanas son una fuente importante de varias vitaminas y minerales, esenciales para una buena salud.
+                            Disminuye la Fatiga: Ayudan a combatir el cansancio gracias a su contenido en vitaminas del grupo B y minerales como el hierro.
+                            Buena para los Dientes: Masticar manzanas estimula la producción de saliva, reduciendo el nivel de bacterias en la boca y protegiendo contra la caries.</h5>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                       
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- CDN VERSION INTERNET --> 
+
+
+       </div>
+
+       <div class="row mt-3">
+        <div class="col-4">
+            <div class="card">
+                <img class="card-img-top" src="img6.jpg" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Beneficios del ayuno intermitente</h5>
+                    
+                    <p class="card-text">que te haran querer probarlo</p>
+                    <button
+                            class="btn btn-primary btn-lg"
+                            data-bs-toggle="modal"
+                            data-bs-target="#mi-modal-4"
+                        >Ver mas
+                        </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CDN VERSION INTERNET --> 
+
+        <div class="modal fade" id="mi-modal-4" tabindex="-1" aria-hidden="true" aria-labelledby="label-modal-4">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Beneficios del ayuno intermitente que te haran querer probarlo</h1>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <h5>El ayuno intermitente es un estilo de alimentación muy practicado en los últimos años con diferentes fines. Consiste en dar reposo de ingesta al cuerpo durante un determinado número de horas al día, o durante días completos. 
+                            El ayuno induce la coordinación de mecanismos metabólicos en el organismo. Después de 12 a 24 horas de ayuno, el cuerpo humano entra en un estado fisiológico de cetosis: niveles bajos de glucosa en sangre, disminución de los depósitos de glucógeno en el hígado y la producción hepática de cuerpos cetónicos derivados de la grasa, mejor conocidos como cetonas. 
+                            Las cetonas sirven como fuente importante de energía, activando la pérdida de grasa corporal. Además, mientras se ayuna, se activa la autofagia, un mecanismo mediante el cual se renuevan las células, se eliminan las toxinas y otras sustancias causantes de la inflamación. </h5>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                       
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- CDN VERSION INTERNET --> 
+
+        <div class="col-4">
+            <div class="card">
+                <img class="card-img-bottom" src="img7.jpg" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Ayuno intermitente</h5>
+                    
+                    <p class="card-text">Claves para poder aprovecharlo al maximo</p>
+                    <button
+                            class="btn btn-primary btn-lg"
+                            data-bs-toggle="modal"
+                            data-bs-target="#mi-modal-5"
+                        >Ver mas
+                        </button>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- CDN VERSION INTERNET --> 
+
+        <div class="modal fade" id="mi-modal-5" tabindex="-1" aria-hidden="true" aria-labelledby="label-modal-5">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Claves para aprovechar al máximo el ayuno intermitente</h1>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <h5>No consumir alimentos por un período de tiempo prudencial puede ofrecernos maravillosos beneficios para la salud. Pero, para aprovechar el ayuno intermitente, debemos estar bien informados sobre en qué consiste la técnica y cuál es la forma correcta de hacerlo. 
+                            Después de varios años de ser estudiado, se ha demostrado que es efectivo para limpiar el cuerpo, controlar y alcanzar el peso ideal, así como activar la regeneración de nuestras células. Claro que sus resultados dependen de que se haga de forma consiente, estructurada y meditada. </h5>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                       
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- CDN VERSION INTERNET --> 
+
+        <div class="col-4">
+            <div class="card">
+                <img class="card-img-bottom" src="img8.jpg" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">5 cenas increibles</h5>
+                    <p class="card-text">Cenas saludables y al estilo de la Cocina Sana</p>
+                    <button
+                            class="btn btn-primary btn-lg"
+                            data-bs-toggle="modal"
+                            data-bs-target="#mi-modal-6"
+                        >Ver mas
+                        </button>
+                </div>
+                
+            </div>
+        </div>
+   </div>
+
+   <!-- CDN VERSION INTERNET --> 
+
+   <div class="modal fade" id="mi-modal-6" tabindex="-1" aria-hidden="true" aria-labelledby="label-modal-6">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">5 cenas increíbles, saludables y al estilo de La Cocina Sana</h1>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            
+            <div class="modal-body">
+                <h5>Antes de darte deliciosas opciones para la cena y ayudarte a dejar la monotonía al momento de comer durante la noche, queremos hablar de la importancia de modificar los hábitos y empezar a cenar a una hora más temprana. Y es que, de hecho, nuestro cuerpo no está diseñado para cenar de manera copiosa y muchos estudios demuestran los beneficios de adelantar la última comida del día, e incluso, los ayunos más efectivos son los que contemplan las horas de descanso nocturno.
+                    Ajustar nuestra alimentación al ritmo circadiano y a las horas de luz trae muchos beneficios que van mucho más profundo que bajar de peso o mantenerlo.  ¿Cuál sería la hora adecuada para la cena? Las 6 de la tarde sería lo mejor, sin embargo, para no ser tan estrictos y conociendo las costumbres y hábitos alimenticios de países como España, no superar las 8pm sería lo más recomendado. Acompáñanos a conocer todas las ventajas de cenar temprano.</h5>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+               
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+<!-- CDN VERSION INTERNET --> 
+
+   <div class="row mt-3">
+    <div class="col-4">
+        <div class="card">
+            <img class="card-img-top" src="img9.jpg" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Alimento no sanos</h5>
+                
+                <p class="card-text">Alimentos que creias sanos, pero no lo son</p>
+                <button
+                            class="btn btn-primary btn-lg"
+                            data-bs-toggle="modal"
+                            data-bs-target="#mi-modal-7"
+                        >Ver mas
+                        </button>
+            </div>
+        </div>
+    </div>
+
+     <!-- CDN VERSION INTERNET --> 
+
+   <div class="modal fade" id="mi-modal-7" tabindex="-1" aria-hidden="true" aria-labelledby="label-modal-7">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Alimentos que creías sanos, pero no lo son</h1>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            
+            <div class="modal-body">
+                <h5>La alimentación saludable ha ganado terreno en los últimos años, y por esto la industria alimentaria ha hecho lo imposible para llevar al mercado un gran número de productos que dicen ser muy saludables, pero surge la duda ¿Realmente lo son o se trata más de estrategias de marketing? 
+                    Muchos alimentos que encontramos ahora en los estantes de los supermercados dicen ser saludables, así como muchos otros que durante años hemos considerado sanos pero que en la práctica no contribuyen con nuestra salud. ¿Cómo reconocerlos? Saber leer las etiquetas es lo primero, además de una premisa que siempre te ayudará, mientras más natural y menos procesado mejor. Ahora que sabes esto, vemos algunos de esos alimentos que la mayoría piensa que son sanos pero en realidad se trata de alimentos engañosos.</h5>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+               
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+<!-- CDN VERSION INTERNET --> 
+
+    
+</div>
+
+        
+    </div>
+<!-- CDN VERSION INTERNET -->    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+ <!-- CDN VERSION LOCAL   <script src="js/bootstrap.bundle.min.js"></script> -->
+</body>
+</html>

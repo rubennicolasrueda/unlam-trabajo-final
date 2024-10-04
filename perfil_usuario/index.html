@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Navegación Saludable</title>
+    <style>
+        .navbar {
+            background-color: #4CAF50; /* Color verde saludable */
+        }
+        .navbar-nav .nav-link {
+            color: white; /* Color del texto */
+        }
+        .navbar-nav .nav-link:hover {
+            color: #FFC107; /* Color amarillo al pasar el ratón */
+        }
+        body {
+            padding-top: 20px; /* Espacio encima del formulario */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="../perfil_usuario/index.html">Recetas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Noticias/cards.html">Noticias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../perfil_usuario/contacto.html">Contacto</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../perfil publico/formInicioSesion.html">Mi cuenta</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h2 class="text-center">Arma tu receta</h2>
+    <div class="row mt-3">
+        <div class="col-4">
+            <div class="input-group mb-3">
+                <label for="verduras" class="input-group-text">Verduras</label>
+                <select name="" id="verduras" class="form-select">
+                    <option value="tomate">Tomates</option>
+                    <option value="zanahoria">Zanahoria</option>
+                    <option value="arveja">Arvejas</option>
+                    <option value="cebolla">Cebollas</option>
+                    <option value="brocoli">Brocoli</option>
+                    <option value="papas">papas</option>
+                </select>
+                
+            </div>
+        </div>
+
+        <div class="col-4"></div>
+            <div class="input-group mb-3">
+                <label for="proteinas" class="input-group-text">Proteinas</label>
+                <select name="" id="proteinas" class="form-select">
+                    <option value="pescado">Pescado</option>
+                    <option value="pollo">Pollo</option>
+                    <option value="huevos">Huevos</option>
+                    <option value="carneRes">Carne de Res</option>
+                    <option value="almendras">Almendras</option>
+                    <option value="salmon">Salmon</option>
+                </select>
+               
+            </div>
+        </div>
+
+        <div class="col-4"></div>
+            <div class="input-group mb-3">
+                <label for="carbo" class="input-group-text">Carbohidratos</label>
+                <select name="" id="carbo" class="form-select">
+                    <option value="arroz">Arroz</option>
+                    <option value="lentejas">Lenteja</option>
+                    <option value="huevos">Huevos</option>
+                    <option value="quinoa">Qhinoa</option>
+                    <option value="avena">Avena</option>
+                    <option value="harinaB">Harina Blanca</option>
+                </select>
+               
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
