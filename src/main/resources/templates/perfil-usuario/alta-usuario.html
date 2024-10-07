@@ -33,7 +33,7 @@
                     <a class="nav-link" href="../noticias/cards.html">Noticas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contacto">Contacto</a>
+                    <a class="nav-link" href="../perfil_usuario/contacto.html">Contacto</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -46,32 +46,42 @@
 </nav>
 
 <div class="container mt-5">
-    <h2 class="text-center">Crear Usuario</h2>
-    <form>
-        <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre" required>
+    <div class="row">
+        
+
+
+        <form class="col-6">
+            <h2 class="text-center">Crear Usuario</h2>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <input type="text" class="form-control" id="apellido" placeholder="Ingresa tu apellido" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Ingresa tu email" required>
+            </div>
+            <div class="form-group">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" class="form-control" id="contrasena" placeholder="Ingresa tu contraseña" required>
+            </div>
+            <div class="form-group">
+                <label for="repetirContrasena">Repetir Contraseña</label>
+                <input type="password" class="form-control" id="repetirContrasena" placeholder="Repite tu contraseña" required>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Crear Usuario</button>
+            </div>
+        </form>
+
+        <div class="col-5 mt-5">
+            <img src="../perfil_usuario/img1.jpg">
         </div>
-        <div class="form-group">
-            <label for="apellido">Apellido</label>
-            <input type="text" class="form-control" id="apellido" placeholder="Ingresa tu apellido" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Ingresa tu email" required>
-        </div>
-        <div class="form-group">
-            <label for="contrasena">Contraseña</label>
-            <input type="password" class="form-control" id="contrasena" placeholder="Ingresa tu contraseña" required>
-        </div>
-        <div class="form-group">
-            <label for="repetirContrasena">Repetir Contraseña</label>
-            <input type="password" class="form-control" id="repetirContrasena" placeholder="Repite tu contraseña" required>
-        </div>
-        <div class="text-center">
-            <button type="submit" class="btn btn-primary">Crear Usuario</button>
-        </div>
-    </form>
+    </div>
+    
     
 
 
