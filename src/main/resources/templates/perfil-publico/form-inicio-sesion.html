@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,13 +26,13 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="../perfil-usuario/index.html">Recetas</a>
+                    <a class="nav-link" th:href="@{/arma-receta}">Recetas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../noticias/cards.html">Noticias</a>
+                    <a class="nav-link" th:href="@{/noticias}">Noticias</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../perfil-usuario/contacto.html">Contacto</a>
+                    <a class="nav-link" th:href="@{/contacto}">Contacto</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -61,7 +60,7 @@
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Iniciar</button>
             </div>
-            <p class="mt-3 text-center">¿No tienes una cuenta? <a href="../perfil-usuario/alta-usuario.html">Registrarse</a></p>
+            <p class="mt-3 text-center">¿No tienes una cuenta? <a th:href="@{/sign-up}">Registrarse</a></p>
         </form>
 
         <div class="col-5">
