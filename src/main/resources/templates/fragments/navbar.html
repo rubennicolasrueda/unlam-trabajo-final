@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Navbar fragment</title>
+</head>
+<body>
+<div th:fragment="navbar">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/arma-receta}">Recetas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/noticias}">Noticias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/contacto}">Contacto</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/}">Mi cuenta</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+</body>
+</html>
