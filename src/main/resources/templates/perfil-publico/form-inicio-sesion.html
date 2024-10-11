@@ -27,16 +27,15 @@
 <div class="container mt-5">
     <div class="row">
 
-        <form class="col-6">
+        <form th:action="@{/login}" class="col-6"  method="post"  >
             <h2 class="text-center">Iniciar Sesión</h2>
             <div class="form-group">
-                <label for="emailLogin">Email</label>
-                <input type="email" class="form-control" id="emailLogin" placeholder="Ingresa tu email" required>
+                <label for="username">Usuario</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Ingresa tu user" required>
             </div>
             <div class="form-group">
-                <label for="contrasenaLogin">Contraseña</label>
-                <input type="password" class="form-control" id="contrasenaLogin" placeholder="Ingresa tu contraseña"
-                       required>
+                <label for="password">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña">
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Iniciar</button>
@@ -45,7 +44,7 @@
         </form>
 
         <div class="col-5">
-            <img src="/img/perfil-usuario/img2.jpg">
+            <img th:src="@{/img/perfil-usuario/img2.jpg}">
         </div>
 
     </div>

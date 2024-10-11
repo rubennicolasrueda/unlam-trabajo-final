@@ -25,11 +25,11 @@ import java.util.Properties;
         transactionManagerRef = "confTransactionManager"
 )
 @ComponentScan(basePackages = {"com.example"})
-public class Conf {
+public class MySqlConf {
 
     private Environment environment;
 
-    public Conf(Environment environment) {
+    public MySqlConf(Environment environment) {
         this.environment = environment;
     }
 
