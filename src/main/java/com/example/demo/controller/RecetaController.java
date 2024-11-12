@@ -1,14 +1,89 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.GuardaReceta;
+import com.example.demo.dto.RecetaSemana;
+import com.example.demo.model.Receta;
+import com.example.demo.service.RecetaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import java.io.IOException;
+import java.util.List;
 
 @Controller
+@RequestMapping("/recetas")
 public class RecetaController {
 
+    @Autowired
+    private RecetaService recetaService;
+
     @GetMapping("/arma-receta")
-    public String armaReceta() {
+    public String armaRecetas(Model model) {
+        List<String> optionsDropDownIngredientes = recetaService.obtenerIngredientes();
+        model.addAttribute("ingredientes", optionsDropDownIngredientes);
+        List<String> optionsDropDownCategorias = recetaService.obtenerCategorias();
+        model.addAttribute("categorias", optionsDropDownCategorias);
         return "perfil-usuario/arma-recetas";
+    }
+
+    @GetMapping("/mis-recetas")
+    public String misRecetas(Model model) {
+        return "perfil-usuario/mis-recetas";
+    }
+
+    @GetMapping("/mi-recomendacion")
+    public String miRecomendacion() {
+        return "perfil-usuario/mis-recetas";
+    }
+
+
+    @GetMapping("/arma-receta-ingredientes")
+    @ResponseBody
+    public List<Receta> obtenerRecetasPorIngredientes(@RequestParam List<String> ingredientes) {
+        Receta receta = recetaService.obtenerRecetaPorIngredientes(ingredientes);
+        //Receta receta = recetaService.obtenerRecetaPorIngredientes(List.of("Lechuga"));
+        // System.out.println(receta);
+        // model.addAttribute("recetas", List.of(receta));
+        // return "perfil-usuario/arma-recetas" ;
+        return List.of(receta);
+    }
+
+    // ToDO -eliminar
+    @GetMapping("/arma-receta-categoria")
+    public String obtenerRecetasPorCategoria(Model model, @RequestParam String categoria) {
+        List<RecetaSemana> recetas = recetaService.obtenerSemanaRecetasPorCategoria(categoria);
+        model.addAttribute("recetasSemana", recetas);
+        List<String> optionsDropDownIngredientes = recetaService.obtenerIngredientes();
+        model.addAttribute("ingredientes", optionsDropDownIngredientes);
+        List<String> optionsDropDownCategorias = recetaService.obtenerCategorias();
+        model.addAttribute("categorias", optionsDropDownCategorias);
+        return "perfil-usuario/arma-recetas" ;
+    }
+
+    /*
+    @GetMapping("/arma-receta-semana")
+    // public String obtenerRecetasSemana(Model model, @PathVariable String categoria) {
+    public String obtenerRecetasSemana() {
+        // List<Receta> receta = recetaService.obtenerRecetaPorCategoria(categoria);
+        List<Receta> recetas = recetaService.obtenerRecetasPorCategoria("Saludable");
+        System.out.println(recetas);
+        // model.addAttribute("recetas", receta);
+        return "perfil-usuario/arma-recetas" ;
+    }
+
+     */
+
+    @PostMapping("/guarda-receta")
+    public String guardarReceta(@RequestBody GuardaReceta receta) {
+        recetaService.guardarReceta(receta.titulo());
+        return "perfil-usuario/arma-recetas" ;
+    }
+
+    @GetMapping("/imprimir")
+    public ResponseEntity<byte[]> imprimir() throws IOException {
+        return recetaService.imprimir("receta");
     }
 
 }

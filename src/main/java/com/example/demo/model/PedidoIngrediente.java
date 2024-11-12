@@ -2,12 +2,14 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
-@Table(name = "PedidoIngrediente")
-public class PedidoIngrediente {
+@Table(name = "pedido_ingrediente")
+public class PedidoIngrediente implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
     private Ingrediente ingrediente;
     private Pedido pedido;

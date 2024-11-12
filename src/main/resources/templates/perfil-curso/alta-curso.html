@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/navbar-styles.css}">
+    <script th:src="@{/js/message-handler.js}"></script>
+    <script type="text/javascript" th:src="@{/js/money-input.js}" defer></script>
+    <title>Alta de curso</title>
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Formulario de Alta de Curso</h2>
+    <form id="cursoForm" method="POST" th:object="${curso}" th:action="@{/cursos/alta-curso}" onsubmit="submitForm(event, 'cursoForm')">
+        <!-- Nombre del Curso -->
+        <div class="form-group">
+            <label for="nombreCurso">Nombre del Curso</label>
+            <input type="text" class="form-control" id="nombreCurso" field="*{titulo}" name="titulo" placeholder="Ingrese el nombre del curso" required>
+        </div>
+
+        <!-- Descripción del Curso -->
+        <div class="form-group">
+            <label for="descripcionCurso">Descripción</label>
+            <textarea class="form-control" id="descripcionCurso" field="*{descripcion}" name="descripcion" rows="3" placeholder="Ingrese una breve descripción del curso" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="precioCurso">Precio del Curso</label>
+            <input type="text" class="form-control" id="precioCurso" field="*{precio}" name="precio" pattern="^\d+(\.\d+)?$" value="" data-type="currency" required>
+        </div>
+
+        <!-- Botón para Enviar -->
+        <button type="submit" class="btn btn-success mt-3">Crear Curso</button>
+    </form>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<!-- Scripts de Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

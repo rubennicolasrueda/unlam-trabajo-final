@@ -2,15 +2,15 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name="FechaCurso")
+@Table(name="fecha_curso")
+public class FechaCurso implements Serializable {
 
-public class FechaCurso {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
     private LocalDate fecha;
     private Curso curso;

@@ -20,12 +20,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/login", "/sign-up", "/noticias", "/arma-receta", "/contacto", "/img/**").permitAll()
+                        .requestMatchers("/login", "/cursos/**", "/sign-up", "/noticias", "/recetas/**", "/contacto", "/img/**", "/css/**", "/js/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/arma-receta", true)  // Default page after login
+                        .defaultSuccessUrl("/recetas/arma-receta", true)  // Default page after login
                         .permitAll()
                 )
                 .logout(logout -> logout
