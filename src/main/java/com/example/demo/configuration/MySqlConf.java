@@ -64,7 +64,7 @@ public class MySqlConf {
     private DataSource dataSource() {
         HikariDataSource ds = new HikariDataSource();
         ds.setDriverClassName(environment.getRequiredProperty("spring.datasource.driver-class-name"));
-        ds.setJdbcUrl("jdbc:mysql://localhost:3306/chranchbydb");
+        ds.setJdbcUrl(environment.getRequiredProperty("spring.datasource.url"));
         ds.setUsername(environment.getRequiredProperty("spring.datasource.username"));
         ds.setPassword(environment.getRequiredProperty("spring.datasource.password"));
         return ds;
