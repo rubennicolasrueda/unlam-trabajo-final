@@ -2,15 +2,19 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "Ingrediente")
-public class Ingrediente {
+public class Ingrediente implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
+    @Column(name = "id_ingrediente")
     private Long ingrediente;
     private String nombre;
     private String categoria;
+    @Column(name = "valor_nutricional")
     private Long valorNutricional;
 
     public Ingrediente(){

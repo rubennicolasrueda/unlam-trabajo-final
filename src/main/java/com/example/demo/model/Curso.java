@@ -2,22 +2,27 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name ="Curso")
-public class Curso {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+import java.io.Serializable;
+import java.math.BigDecimal;
 
+@Entity
+@Table(name ="curso")
+public class Curso implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_curso")
     private Long id;
     private String titulo;
     private String descripcion;
-    private Long precio;
-    private Profesional profesional;
+    private BigDecimal precio;
+    @Column(name="id_profesional")
+    private Long profesional;
     private String estado;
 
     public Curso() {
     }
-    public Curso(Long id, String titulo, String descripcion, Long precio, Profesional profesional, String estado){
+    public Curso(Long id, String titulo, String descripcion, BigDecimal precio, Long profesional, String estado){
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -46,19 +51,19 @@ public class Curso {
     public void setDescripcion(String descripcion){
         this.descripcion = descripcion;
     }
-    public getPrecio(){
+    public BigDecimal getPrecio(){
         return precio;
     }
-    public void setPrecio(Long precio){
+    public void setPrecio(BigDecimal precio){
         this.precio = precio;
     }
-    public getProfesional(){
+    public Long getProfesional(){
         return profesional;
     }
-    public void setProfesional(Profesional profesional){
+    public void setProfesional(Long profesional){
         this.profesional = profesional;
     }
-    public getEstado(){
+    public String getEstado(){
         return estado;
     }
     public void setEstado(String estado){

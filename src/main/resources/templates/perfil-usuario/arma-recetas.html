@@ -3,164 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!--  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
     <title>Navegación Saludable</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="estilos2.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/navbar-styles.css}">
+    <script type="text/javascript" th:src="@{/js/arma-receta-ingrediente.js}" defer></script>
     <style>
-        .navbar {
-            background-color: #4CAF50; /* Color verde saludable */
+        .dropdown-menu {
+        max-height: 300px;
+        overflow-y: auto;
         }
-        .navbar-nav .nav-link {
-            color: white; /* Color del texto */
-        }
-        .navbar-nav .nav-link:hover {
-            color: #FFC107; /* Color amarillo al pasar el ratón */
-        }
-        body {
-            padding-top: 20px; /* Espacio encima del formulario */
-        }
-    </style>
 
+        /* Estilos para esconder toda la página durante la impresión excepto el contenido que queremos */
+        @media print {
+            body * {
+                visibility: hidden; /* Oculta todo lo demás */
+            }
+
+            .printableSection, .printableSection * {
+                visibility: visible; /* Muestra solo la sección seleccionada */
+            }
+
+            .printableSection {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+            
+    </style>
 </head>
 <body>
 
 <div th:insert="~{fragments/navbar :: navbar}"></div>
 
 <div class="container mt-5">
-    <h2 class="text-center">Arma tu receta</h2>
-    <div class="row mt-3">
-        <div class="col-4">
-            <div class="input-group mb-3">
-                <label for="verduras" class="input-group-text">Verduras</label>
-                <select name="" id="verduras" class="form-select">
-                    <option value="tomate">Tomates</option>
-                    <option value="zanahoria">Zanahoria</option>
-                    <option value="arveja">Arvejas</option>
-                    <option value="cebolla">Cebollas</option>
-                    <option value="brocoli">Brocoli</option>
-                    <option value="papas">papas</option>
-                </select>
+        <h1 class="text-center">Arma tu receta</h1>
+        <div class="row mt-3">
+                <!-- SELECCION MULTIPLE DE INGREDIENTES -->           
+                <!-- Botón de dropdown -->
 
+            <h2>Selecciona dos ingredientes o más</h2>
+            <div class="dropdown">
+                    <button class="btn btn-success dropdown-toggle" type="button" id="categoriaDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Ingredientes
+                    </button>
+
+                    <!-- Dropdown con búsqueda -->
+                    <ul class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton" id="multiSelectDropdown">
+                        <li>
+                            <!-- Search field -->
+                            <input type="text" class="form-control mb-3" placeholder="Buscar..." id="searchInput" onkeyup="filterOptions()">
+                        </li>
+
+                        <!-- Dropdown options with checkboxes -->
+                        <li th:each="ingrediente : ${ingredientes}">
+                            <div>
+                                <input class="form-check-input" type="checkbox" th:id="|option_${ingrediente}|" th:value="${ingrediente}" onchange="updateSelectedOptions()">
+                                <label class="form-check-label" th:for="|option_${ingrediente}|" th:text="${ingrediente}"></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+       
+            <div class="col-4">
+                <!-- Etiqueta donde se muestran las opciones seleccionadas -->
+                <p>Opciones seleccionadas: <span id="selectedOptions">Ninguna</span></p>
             </div>
-        </div>
-
-        <div class="col-4">
-            <div class="input-group mb-3">
-                <label for="proteinas" class="input-group-text">Proteinas</label>
-                <select name="" id="proteinas" class="form-select">
-                    <option value="pescado">Pescado</option>
-                    <option value="pollo">Pollo</option>
-                    <option value="huevos">Huevos</option>
-                    <option value="carneRes">Carne de Res</option>
-                    <option value="almendras">Almendras</option>
-                    <option value="salmon">Salmon</option>
-                </select>
-
-            </div>
-        </div>
-
-        <div class="col-4">
-            <div class="input-group mb-3">
-                <label for="carbo" class="input-group-text">Carbohidratos</label>
-                <select name="" id="carbo" class="form-select">
-                    <option value="arroz">Arroz</option>
-                    <option value="lentejas">Lenteja</option>
-                    <option value="huevos">Huevos</option>
-                    <option value="quinoa">Qhinoa</option>
-                    <option value="avena">Avena</option>
-                    <option value="harinaB">Harina Blanca</option>
-                </select>
-
-            </div>
-        </div>
-
-        <div class="col-4">
-            <div class="input-group mb3">
-                <label for="mensaje" class="form-label"></label>
-                <textarea class="form-control" id="mensaje" rows="5" placeholder="Escribe tu mensaje"
-                          required></textarea>
-            </div>
+            
+            <table id="recipeTable" class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th> Título </th>
+                        <th> Descripcion </th>
+                        <th> Valor nutricional </th>
+                        <th> Tipo de receta </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${recetas == null || recetas.isEmpty()}">
+                        <td colspan="4"> No hay recetas disponibles </td>
+                    </tr>
+                    <tr th:each="receta : ${recetas}">
+                        <td><span th:text="${receta.titulo}"></span></td>
+                        <td><span th:text="${receta.descripcion}"></span></td>
+                        <td><span th:text="${receta.valorNutricional}"></span></td>
+                        <td><span th:text="${receta.tipoDeReceta}"></span></td>
+                    </tr>
+                    </tbody>
+            </table>
+            <!-- ---------------------------------------------------------------------------  -->
         </div>
 
         <div class="row mt-3">
-            <h2 class="text-center">Reels de YouTube</h2>
-            <div class="col-4">
-                <!-- Video Responsivo -->
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="1903" height="784" src="https://www.youtube.com/embed/QZXGZVIRGoU"
-                            title="UNA SEMANA DE ALMUERZOS SALUDABLES | Michela Perleche" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
+            <h2>Selecciona una categoria de dieta</h2>
+    
+            <!-- Dropdown -->
+            <div class="dropdown">
+                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Categorías
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li th:each="categoria : ${categorias}">
+                        <a class="dropdown-item" th:text="${categoria}" th:href="@{/recetas/arma-receta-categoria(categoria=${categoria})}"></a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-4">
-                <!-- Video Responsivo -->
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="1903" height="784" src="https://www.youtube.com/embed/SqtWzuoQhzE"
-                            title="DESAYUNOS que SANAN tu CUERPO" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="col-4">
-                <!-- Video Responsivo -->
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="903" height="784" src="https://www.youtube.com/embed/2s0eElVnJVs"
-                            title="ARGENTINO PROBANDO COMIDA CALLEJERA MEXICANA: No me aguante el picante!"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-            </div>
+            <div id="tableCategoria">
+                <button onclick="printSection()">Imprimir</button>
+                <div class="printableSection" id="tabla1printableSection">
 
-
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Tipo de comida</th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miercoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sabado</th>
+                            <th>Domingo</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:if="${recetas == null || recetas.isEmpty()}">
+                                <td colspan="8"> No hay recetas disponibles </td>
+                            </tr>
+                            <tr th:each="recetaSemana : ${recetasSemana}">
+                                <td><span th:text="${recetaSemana.tipoComida}"></span></td>
+                                <td><span th:text="${recetaSemana.lunes}"></span></td>
+                                <td><span th:text="${recetaSemana.martes}"></span></td>
+                                <td><span th:text="${recetaSemana.miercoles}"></span></td>
+                                <td><span th:text="${recetaSemana.jueves}"></span></td>
+                                <td><span th:text="${recetaSemana.viernes}"></span></td>
+                                <td><span th:text="${recetaSemana.sabado}"></span></td>
+                                <td><span th:text="${recetaSemana.domingo}"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
         </div>
 
         <div class="row mt-3">
-
+            <h2 class="text-center">Reels</h2>
             <div class="col-4">
                 <!-- Video Responsivo -->
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="1903" height="784" src="https://www.youtube.com/embed/aYg09E7YmPk"
-                            title="NO COMA PAN, PREPARE 3 DESAYUNOS MUY DELICIOSOS, FACILES Y ECONÓMICOS"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="1903" height="784" src="https://www.youtube.com/embed/aYg09E7YmPk" title="NO COMA PAN, PREPARE 3 DESAYUNOS MUY DELICIOSOS, FACILES Y ECONÓMICOS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="col-4">
                 <!-- Video Responsivo -->
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="1903" height="784" src="https://www.youtube.com/embed/4lcbUfMKulk"
-                            title="¡Papas y carne de pollo!😉 ¡Haz esta deliciosa receta! ¡¡Cena adictiva!!👌"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="1903" height="784" src="https://www.youtube.com/embed/4lcbUfMKulk" title="¡Papas y carne de pollo!😉 ¡Haz esta deliciosa receta! ¡¡Cena adictiva!!👌" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="col-4">
                 <!-- Video Responsivo -->
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="1903" height="784" src="https://www.youtube.com/embed/IwihxJo8t1Y"
-                            title="Mejor que la pizza. Simplemente ralla 3 calabacines frescos. Fácil, barato y delicioso😉👌."
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="1903" height="784" src="https://www.youtube.com/embed/IwihxJo8t1Y" title="Mejor que la pizza. Simplemente ralla 3 calabacines frescos. Fácil, barato y delicioso😉👌." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
-
-
         </div>
-
-
-    </div>
+        </div>
 </div>
+<div th:insert="~{fragments/footer :: footer}"></div>
+<script>
+    // Función para filtrar las opciones del dropdown según el texto ingresado en el buscador
+    function filterOptions() {
+        var input, filter, ul, li, div, label, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("multiSelectDropdown");
+        li = ul.getElementsByTagName("li");
 
+        // Itera sobre los elementos y oculta aquellos que no coincidan con el filtro
+        for (i = 1; i < li.length; i++) {
+            div = li[i].getElementsByTagName("div")[0];
+            label = div.getElementsByTagName("label")[0];
+            txtValue = label.textContent || label.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
 
+    // Función para actualizar la lista de opciones seleccionadas
+    function updateSelectedOptions() {
+        var selected = [];
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        
+        checkboxes.forEach(function(checkbox) {
+            selected.push(checkbox.nextElementSibling.innerText); // Obtiene el texto del label asociado al checkbox
+        });
+
+        // Muestra las opciones seleccionadas o 'Ninguna' si no hay selección
+        document.getElementById("selectedOptions").innerText = selected.length > 0 ? selected.join(', ') : 'Ninguna';
+    }
+
+    function showTable(id) {
+      // Ocultar todas las tablas
+      document.querySelectorAll('.table-responsive').forEach(function(table) {
+        table.classList.add('hidden');
+      });
+
+      // Mostrar la tabla seleccionada
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+     // Función que imprime solo la sección deseada
+     function printSection() {
+      window.print();
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/js/bootstrap-multiselect.min.js" integrity="sha512-lxQ4VnKKW7foGFV6L9zlSe+6QppP9B2t+tMMaV4s4iqAv4iHIyXED7O+fke1VeLNaRdoVkVt8Hw/jmZ+XocsXQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+
 </body>
 </html>

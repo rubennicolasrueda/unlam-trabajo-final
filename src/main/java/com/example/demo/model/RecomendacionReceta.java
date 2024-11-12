@@ -2,32 +2,35 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "RecomendacionReceta")
-public class RecomendacionReceta {
+@Table(name = "recomendaciones_receta")
+public class RecomendacionReceta implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
-    private Usuario usuario;
-    private Receta receta;
+    @Column(name ="id_usuario")
+    private Long usuario;
+    @Column(name ="id_receta")
+    private Long receta;
+
     private LocalDate fechaAlta;
     private LocalDate fechaActualizacion;
 
     public RecomendacionReceta() {
     }
 
-    public RecomendacionReceta(Long id, Usuario usuario, Receta receta, LocalDate fechaAlta, LocalDate fechaActualizacion) {
-        this.id = id;
+    public RecomendacionReceta(Long usuario, Long receta, LocalDate fechaAlta, LocalDate fechaActualizacion) {
         this.usuario = usuario;
         this.receta = receta;
         this.fechaAlta = fechaAlta;
         this.fechaActualizacion = fechaActualizacion;
     }
 
-    public Long getId() {
+    public java.lang.Long getId() {
         return id;
     }
 
@@ -35,19 +38,19 @@ public class RecomendacionReceta {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
+    public Long getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Long usuario) {
         this.usuario = usuario;
     }
 
-    public Receta getReceta() {
+    public Long getReceta() {
         return receta;
     }
 
-    public void setReceta(Receta receta) {
+    public void setReceta(Long receta) {
         this.receta = receta;
     }
 

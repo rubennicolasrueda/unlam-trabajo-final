@@ -2,23 +2,28 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "CarritoDeCompra")
-public class CarritoDeCompra {
+@Table(name = "carrito_de_compras")
+public class CarritoDeCompra implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id_carrito")
     private Long id;
-    private Usuario usuario;
-    private Pago pago;
+    @Column(name="id_usuario")
+    private Long usuario;
+    @Column(name="id_pago")
+    private Long pago;
     private LocalDate fechaAlta;
     private LocalDate fechaActualizacion;
     private String estado;
 
     public CarritoDeCompra(){
     }
-    public CarritoDeCompra(Long id, Usuario usuario, Pago pago, LocalDate fechaAlta, LocalDate fechaActualizacion, String estado){
+    public CarritoDeCompra(Long id, Long usuario, Long pago, LocalDate fechaAlta, LocalDate fechaActualizacion, String estado){
         this.id = id;
         this.usuario = usuario;
         this.pago = pago;
@@ -26,22 +31,22 @@ public class CarritoDeCompra {
         this.fechaActualizacion = fechaActualizacion;
         this.estado = estado;
     }
-    public Long getId(){
+    public java.lang.Long getId(){
         return id;
     }
-    public void setId(Long id){
+    public void setId(java.lang.Long id){
         this.id = id;
     }
-    public Usuario getUsuario(){
+    public Long getUsuario(){
         return usuario;
     }
-    public void setUsuario(Usuario usuario){
+    public void setUsuario(Long usuario){
         this.usuario = usuario;
     }
-    public Pago getPago(){
+    public Long getPago(){
         return pago;
     }
-    public void setPago(Pago pago){
+    public void setPago(Long pago){
         this.pago = pago;
     }
     public LocalDate getFechaAlta(){

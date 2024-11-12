@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilos2.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/navbar-styles.css}">
+    <title>Turnos</title>
+    <style>
+        .hero {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+
+<div class="container mt-5">
+    <div class="hero">
+        <h1>Turnos con Nutricionista</h1>
+        <p>Elije el turno para que un profesional pueda ayudarte con tus objetivos nutricionales</p>
+        
+    </div>
+    
+    <div class="col-md-12 mt-5">
+        <h4>Calendario de Turnos</h4>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Día</th>
+              <th>Profesional</th>
+              <th>Hora</th>
+              <th>Elegir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lunes</td>
+              <td>Gabriel </td>
+              <td>10:00 AM - 11:30 AM</td>
+              <td><a href="#" class="btn btn-success">Reservar Turno</a></td>
+            </tr>
+            <tr>
+              <td>Martes</td>
+              <td>Cristian Mendez</td>
+              <td>12:00 PM - 1:30 PM</td>
+              <td><a href="#" class="btn btn-success">Reservar Turno</a></td>
+            </tr>
+            <tr>
+              <td>Miércoles</td>
+              <td>Ruben Rueda</td>
+              <td>2:00 PM - 3:30 PM</td>
+              <td><a href="#" class="btn btn-success">Reservar Turno</a></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-12 mt-5">
+        <h4>Turnos Reservados</h4>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Día</th>
+              <th>Profesional</th>
+              <th>Hora</th>
+              <th>Elegir</th>
+              <th>Cancelar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lunes</td>
+              <td>Gabriel </td>
+              <td>10:00 AM - 11:30 AM</td>
+              <td><a href="../perfil nutricionista/videoLlamada.html" class="btn btn-success">Entrar al consultorio</a></td>
+              <td><a href="#" class="btn btn-danger">Cancelar turno</a></td>
+            </tr>
+            <tr>
+              <td>Martes</td>
+              <td>Cristian Mendez</td>
+              <td>12:00 PM - 1:30 PM</td>
+              <td><a href="../perfil nutricionista/videoLlamada.html" class="btn btn-success">Entrar al consultorio</a></td>
+              <td><a href="#" class="btn btn-danger">Cancelar turno</a></td>
+            </tr>
+          
+          </tbody>
+        </table>
+    </div>     
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

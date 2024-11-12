@@ -8,7 +8,7 @@ public class NoticiasController {
 
     @GetMapping("/noticias")
     public String noticias() {
-        return "noticias/cards";
+        return "noticias/noticias";
     }
 
 }

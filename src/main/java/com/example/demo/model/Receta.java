@@ -2,31 +2,37 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "Receta")
-public class Receta {
+public class Receta implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
+    @Column(name = "id_receta")
     private Long id;
     private String titulo;
     private String descripcion;
-    private Long valorNutricional;
+    @Column(name = "valor_nutricional")
+    private String valorNutricional;
     private String imagen;
+    @Column(name = "tipo_de_receta")
     private String tipoDeReceta;
-    private String UsuarioQueLaCreo;
+    @Column(name = "usuario_que_la_creo")
+    private String usuarioQueLaCreo;
 
     public Receta() {
     }
 
-    public Receta(Long id, String titulo, String descripcion, Long valorNutricional, String imagen, String tipoDeReceta, String usuarioQueLaCreo) {
+    public Receta(Long id, String titulo, String descripcion, String valorNutricional, String imagen, String tipoDeReceta, String usuarioQueLaCreo) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.valorNutricional = valorNutricional;
         this.imagen = imagen;
         this.tipoDeReceta = tipoDeReceta;
-        UsuarioQueLaCreo = usuarioQueLaCreo;
+        this.usuarioQueLaCreo = usuarioQueLaCreo;
 
     }
 
@@ -54,11 +60,11 @@ public class Receta {
         this.descripcion = descripcion;
     }
 
-    public Long getValorNutricional() {
+    public String getValorNutricional() {
         return valorNutricional;
     }
 
-    public void setValorNutricional(Long valorNutricional) {
+    public void setValorNutricional(String valorNutricional) {
         this.valorNutricional = valorNutricional;
     }
 
@@ -79,10 +85,24 @@ public class Receta {
     }
 
     public String getUsuarioQueLaCreo() {
-        return UsuarioQueLaCreo;
+        return usuarioQueLaCreo;
     }
 
     public void setUsuarioQueLaCreo(String usuarioQueLaCreo) {
-        UsuarioQueLaCreo = usuarioQueLaCreo;
+        usuarioQueLaCreo = usuarioQueLaCreo;
     }
+
+    @Override
+    public String toString() {
+        return "Receta{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", valorNutricional=" + valorNutricional +
+                ", imagen='" + imagen + '\'' +
+                ", tipoDeReceta='" + tipoDeReceta + '\'' +
+                ", UsuarioQueLaCreo='" + usuarioQueLaCreo + '\'' +
+                '}';
+    }
+
 }

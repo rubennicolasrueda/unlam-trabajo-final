@@ -2,27 +2,26 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
+import java.io.Serializable;
 
 @Entity
 @Table(name ="Profesional")
-public class Profesional {
+public class Profesional implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
-    private Long id;
+    private java.lang.Long id;
     private String especialidad;
     private String serviciosDisponibles;
-    private Long tarifa;
+    private java.lang.Long tarifa;
     private String historialDeUsuariosAtendidos;
     private String planesDieteticosAsignados;
-    private Usuario usuario;
+    private Long usuario;
 
     public Profesional() {
     }
 
-    public Profesional(Long id, String especialidad, String serviciosDisponibles, Long tarifa, String historialDeUsuariosAtendidos, String planesDieteticosAsignados, Usuario usuario) {
+    public Profesional(java.lang.Long id, String especialidad, String serviciosDisponibles, java.lang.Long tarifa, String historialDeUsuariosAtendidos, String planesDieteticosAsignados, Long usuario) {
         this.id = id;
         this.especialidad = especialidad;
         this.serviciosDisponibles = serviciosDisponibles;
@@ -32,11 +31,11 @@ public class Profesional {
         this.usuario = usuario;
     }
 
-    public Long getId() {
+    public java.lang.Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(java.lang.Long id) {
         this.id = id;
     }
 
@@ -56,11 +55,11 @@ public class Profesional {
         this.serviciosDisponibles = serviciosDisponibles;
     }
 
-    public Long getTarifa() {
+    public java.lang.Long getTarifa() {
         return tarifa;
     }
 
-    public void setTarifa(Long tarifa) {
+    public void setTarifa(java.lang.Long tarifa) {
         this.tarifa = tarifa;
     }
 
@@ -80,11 +79,11 @@ public class Profesional {
         this.planesDieteticosAsignados = planesDieteticosAsignados;
     }
 
-    public Usuario getUsuario() {
+    public Long getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Long usuario) {
         this.usuario = usuario;
     }
 }

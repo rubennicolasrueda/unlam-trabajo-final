@@ -1,6 +1,10 @@
 package com.example.demo.configuration;
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.hibernate.boot.model.naming.ImplicitNamingStrategy;
+import org.hibernate.boot.model.naming.PhysicalNamingStrategy;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -20,13 +24,14 @@ import java.util.Properties;
         encoding = "UTF-8"
 )
 @EnableJpaRepositories(
-        basePackages = {"com.example.repositories"},
+        basePackages = {"com.example.demo.repository"},
         entityManagerFactoryRef = "confEntityManagerFactory",
         transactionManagerRef = "confTransactionManager"
 )
-@ComponentScan(basePackages = {"com.example"})
+@ComponentScan(basePackages = {"com.example.demo"})
 public class MySqlConf {
 
+    @Autowired
     private Environment environment;
 
     public MySqlConf(Environment environment) {
@@ -44,7 +49,7 @@ public class MySqlConf {
     public LocalContainerEntityManagerFactoryBean confEntityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("com.example.model.db");
+        em.setPackagesToScan("com.example.demo.model");
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaProperties(additionalProperties());
         em.setJpaVendorAdapter(vendorAdapter);
@@ -69,6 +74,16 @@ public class MySqlConf {
         Properties prop = new Properties();
         prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         return prop;
+    }
+
+    @Bean
+    public ImplicitNamingStrategy implicitNamingStrategy() {
+        return new SpringImplicitNamingStrategy();
+    }
+
+    @Bean
+    public PhysicalNamingStrategy physicalNamingStrategy() {
+        return new org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl();
     }
 
 }
