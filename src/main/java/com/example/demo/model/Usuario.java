@@ -2,11 +2,13 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "Usuario")
-public class Usuario {
+public class Usuario implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -14,7 +16,7 @@ public class Usuario {
     private String email;
     private String contraseña;
     private String tipoDeUsuario;
-    private Categoria id;
+    private Long idCategoria;
     private String nombreDeUsuario;
     private LocalDate fechaAlta;
     private LocalDate fechaBaja;
@@ -22,13 +24,13 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String nombreCompleto, String email, String contraseña, String tipoDeUsuario, Categoria id1, String nombreDeUsuario, LocalDate fechaAlta, LocalDate fechaBaja) {
+    public Usuario(java.lang.Long id, String nombreCompleto, String email, String contraseña, String tipoDeUsuario, Long idCategoria, String nombreDeUsuario, LocalDate fechaAlta, LocalDate fechaBaja) {
         this.id = id;
         this.nombreCompleto = nombreCompleto;
         this.email = email;
         this.contraseña = contraseña;
         this.tipoDeUsuario = tipoDeUsuario;
-        this.id = id1;
+        this.idCategoria = idCategoria;
         this.nombreDeUsuario = nombreDeUsuario;
         this.fechaAlta = fechaAlta;
         this.fechaBaja = fechaBaja;
@@ -38,7 +40,7 @@ public class Usuario {
         return id;
     }
 
-    public void setId(Categoria id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -66,8 +68,8 @@ public class Usuario {
         this.fechaBaja = fechaBaja;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdCategoria(Long id) {
+        this.idCategoria = idCategoria;
     }
 
     public String getNombreCompleto() {

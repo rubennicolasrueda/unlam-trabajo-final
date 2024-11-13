@@ -2,26 +2,27 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "ConsultaProfesional")
-public class ConsultaProfesional {
+@Table(name = "consulta_profesional")
+public class ConsultaProfesional implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private Long id;
-    private Usuario usuario;
+    private java.lang.Long id;
+    private Long usuario;
     private Profesional profesional;
     private LocalDateTime fechaHora;
     private String planNutricional;
-    private Long tarifa;
+    private java.lang.Long tarifa;
     private String estado;
 
     public ConsultaProfesional() {
     }
 
-    public ConsultaProfesional(Long id, Usuario usuario, Profesional profesional, LocalDateTime fechaHora, String planNutricional, Long tarifa, String estado) {
+    public ConsultaProfesional(java.lang.Long id, Long usuario, Profesional profesional, LocalDateTime fechaHora, String planNutricional, java.lang.Long tarifa, String estado) {
         this.id = id;
         this.usuario = usuario;
         this.profesional = profesional;
@@ -31,19 +32,19 @@ public class ConsultaProfesional {
         this.estado = estado;
     }
 
-    public Long getId() {
+    public java.lang.Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(java.lang.Long id) {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
+    public Long getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Long usuario) {
         this.usuario = usuario;
     }
 
@@ -71,11 +72,11 @@ public class ConsultaProfesional {
         this.planNutricional = planNutricional;
     }
 
-    public Long getTarifa() {
+    public java.lang.Long getTarifa() {
         return tarifa;
     }
 
-    public void setTarifa(Long tarifa) {
+    public void setTarifa(java.lang.Long tarifa) {
         this.tarifa = tarifa;
     }
 

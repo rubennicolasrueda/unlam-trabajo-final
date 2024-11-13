@@ -2,12 +2,14 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "Categoria")
-public class Categoria {
+public class Categoria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
+    @Column(name="id_categoria")
     private Long categoria;
     private String descripcion;
 

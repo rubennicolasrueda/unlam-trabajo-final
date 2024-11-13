@@ -2,38 +2,40 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name="Pedido")
-public class Pedido {
+public class Pedido implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private Usuario usuario;
+    private java.lang.Long id;
+    private Long usuario;
     private LocalDate fechaAlta;
     private LocalDate fechaActualizacion;
     private String estado;
 
     public Pedido(){
     }
-    public Pedido(Long id, Usuario usuario, LocalDate fechaAlta, LocalDate fechaActualizacion, String estado){
+    public Pedido(java.lang.Long id, Long usuario, LocalDate fechaAlta, LocalDate fechaActualizacion, String estado){
         this.id = id;
         this.usuario = usuario;
         this.fechaAlta = fechaAlta;
         this.fechaActualizacion = fechaActualizacion;
         this.estado = estado;
     }
-    public Long getId(){
+    public java.lang.Long getId(){
         return id;
     }
-    public void setId(Long id){
+    public void setId(java.lang.Long id){
         this.id = id;
     }
-    public Usuario getUsuario(){
+    public Long getUsuario(){
         return usuario;
     }
-    public void setUsuario(Usuario usuario){
+    public void setUsuario(Long usuario){
         this.usuario = usuario;
     }
     public LocalDate getFechaAlta(){
