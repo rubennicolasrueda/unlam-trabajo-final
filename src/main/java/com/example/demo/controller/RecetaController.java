@@ -1,27 +1,41 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.GuardaReceta;
 import com.example.demo.dto.RecetaSemana;
+import com.example.demo.model.Ingrediente;
 import com.example.demo.model.Receta;
+import com.example.demo.model.Usuario;
+import com.example.demo.service.IngredienteService;
 import com.example.demo.service.RecetaService;
+import com.example.demo.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import weka.classifiers.bayes.NaiveBayes;
+
+
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("/recetas")
 public class RecetaController {
 
     @Autowired
+    private UsuarioService usuarioService;
+
+    @Autowired
     private RecetaService recetaService;
+
+    @Autowired
+    private IngredienteService ingredienteService;
 
     @GetMapping("/arma-receta")
     public String armaRecetas(Model model) {
-        List<String> optionsDropDownIngredientes = recetaService.obtenerIngredientes();
+        List<String> optionsDropDownIngredientes = ingredienteService.obtenerNombresIngredientes();
         model.addAttribute("ingredientes", optionsDropDownIngredientes);
         List<String> optionsDropDownCategorias = recetaService.obtenerCategorias();
         model.addAttribute("categorias", optionsDropDownCategorias);
@@ -29,7 +43,13 @@ public class RecetaController {
     }
 
     @GetMapping("/mis-recetas")
-    public String misRecetas(Model model) {
+    public String misRecetas(Model model) throws Exception {
+
+        Long usuarioId = usuarioService.obtenerUsuario();
+        model.addAttribute("recetas", recetaService.obtenerMisRecetas(usuarioId));
+        List<Ingrediente> allIngredients = ingredienteService.obtenerIngredientes();
+        model.addAttribute("recetasRecomendadas", recetaService.obtenerRecetaRecomendada(usuarioId, allIngredients));
+
         return "perfil-usuario/mis-recetas";
     }
 
@@ -38,12 +58,11 @@ public class RecetaController {
         return "perfil-usuario/mis-recetas";
     }
 
-
     @GetMapping("/arma-receta-ingredientes")
     @ResponseBody
     public List<Receta> obtenerRecetasPorIngredientes(@RequestParam List<String> ingredientes) {
         Receta receta = recetaService.obtenerRecetaPorIngredientes(ingredientes);
-        //Receta receta = recetaService.obtenerRecetaPorIngredientes(List.of("Lechuga"));
+        // Receta receta = recetaService.obtenerRecetaPorIngredientes(List.of("Lechuga"));
         // System.out.println(receta);
         // model.addAttribute("recetas", List.of(receta));
         // return "perfil-usuario/arma-recetas" ;
@@ -55,7 +74,7 @@ public class RecetaController {
     public String obtenerRecetasPorCategoria(Model model, @RequestParam String categoria) {
         List<RecetaSemana> recetas = recetaService.obtenerSemanaRecetasPorCategoria(categoria);
         model.addAttribute("recetasSemana", recetas);
-        List<String> optionsDropDownIngredientes = recetaService.obtenerIngredientes();
+        List<String> optionsDropDownIngredientes = ingredienteService.obtenerNombresIngredientes();
         model.addAttribute("ingredientes", optionsDropDownIngredientes);
         List<String> optionsDropDownCategorias = recetaService.obtenerCategorias();
         model.addAttribute("categorias", optionsDropDownCategorias);
@@ -76,8 +95,8 @@ public class RecetaController {
      */
 
     @PostMapping("/guarda-receta")
-    public String guardarReceta(@RequestBody GuardaReceta receta) {
-        recetaService.guardarReceta(receta.titulo());
+    public String guardarReceta(@RequestBody Receta receta) {
+        recetaService.guardarReceta(receta.getTitulo());
         return "perfil-usuario/arma-recetas" ;
     }
 

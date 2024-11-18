@@ -11,20 +11,35 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id_usuario")
     private Long id;
+
+    @Column(name="nombre_completo")
     private String nombreCompleto;
+
     private String email;
+
     private String contraseña;
+
+    @Column(name="tipo_de_usuario")
     private String tipoDeUsuario;
+
+    @Column(name="id_categoria")
     private Long idCategoria;
+
+    @Column(name="nombre_de_usuario")
     private String nombreDeUsuario;
+
+    @Column(name="fecha_alta")
     private LocalDate fechaAlta;
+
+    @Column(name="fecha_baja")
     private LocalDate fechaBaja;
 
     public Usuario() {
     }
 
-    public Usuario(java.lang.Long id, String nombreCompleto, String email, String contraseña, String tipoDeUsuario, Long idCategoria, String nombreDeUsuario, LocalDate fechaAlta, LocalDate fechaBaja) {
+    public Usuario(Long id, String nombreCompleto, String email, String contraseña, String tipoDeUsuario, Long idCategoria, String nombreDeUsuario, LocalDate fechaAlta, LocalDate fechaBaja) {
         this.id = id;
         this.nombreCompleto = nombreCompleto;
         this.email = email;

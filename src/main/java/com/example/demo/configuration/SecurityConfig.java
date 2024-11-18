@@ -35,6 +35,7 @@ public class SecurityConfig {
         return http.build();
     }
 
+    /*
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
         var userDetailsService = new InMemoryUserDetailsManager();
@@ -58,6 +59,8 @@ public class SecurityConfig {
 
         return userDetailsService;
     }
+
+     */
 
     @Bean
     public PasswordEncoder passwordEncoder() {

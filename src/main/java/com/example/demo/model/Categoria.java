@@ -21,7 +21,7 @@ public class Categoria implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Long getCategoria() {
+    public Long getId() {
         return categoria;
     }
 
