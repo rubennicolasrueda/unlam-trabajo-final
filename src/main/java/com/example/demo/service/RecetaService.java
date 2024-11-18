@@ -1,11 +1,8 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.GuardaReceta;
 import com.example.demo.dto.RecetaSemana;
-import com.example.demo.model.Receta;
-import com.example.demo.model.RecomendacionReceta;
+import com.example.demo.model.*;
 import com.example.demo.repository.CategoriaRepository;
-import com.example.demo.repository.IngredienteRepository;
 import com.example.demo.repository.RecetaRepository;
 import com.example.demo.repository.RecomendacionRecetaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,10 +28,11 @@ public class RecetaService {
     private RecetaRepository recetaRepository;
 
     @Autowired
-    private IngredienteRepository ingredienteRepository;
+    private RecomendacionRecetaRepository recomendacionRecetaRepository;
 
     @Autowired
-    private RecomendacionRecetaRepository recomendacionRecetaRepository;
+    private RecetaBayesService recetaBayesService;
+
 
     public Receta obtenerRecetaPorIngredientes(List<String> ingredientes) {
         List<Receta> recetas = recetaRepository.findByIngredientesIn(ingredientes);
@@ -62,7 +58,6 @@ public class RecetaService {
 
         RecetaSemana recetaSemanaAlmuerzo = new RecetaSemana (
                 "Almuerzo",
-                /*
                 recetas.get(0).getDescripcion(),
                 recetas.get(1).getDescripcion(),
                 recetas.get(2).getDescripcion(),
@@ -70,19 +65,12 @@ public class RecetaService {
                 recetas.get(4).getDescripcion(),
                 recetas.get(5).getDescripcion(),
                 recetas.get(6).getDescripcion()
-                 */
-                "receta",
-                "receta",
-                "receta",
-                "receta",
-                "receta",
-                "receta",
-                "receta"
         );
 
         recetasSemana.add(recetaSemanaAlmuerzo);
-
+        System.out.println(recetas.size());
         if(recetas.size() > 13) {
+
             RecetaSemana recetaSemanaCena = new RecetaSemana (
                     "Cena",
                     recetas.get(7).getDescripcion(),
@@ -107,6 +95,7 @@ public class RecetaService {
     }
 
     private List<Receta> obtenerRecetasParaLaSemana(List<Receta> recetas){
+        System.out.println(recetas.size());
         return recetas.stream()
                 .skip(new Random().nextInt(recetas.size()))
                 .limit(14)  // Limit to 7 elements
@@ -120,7 +109,7 @@ public class RecetaService {
         recomendacionRecetaRepository.save(recomendacionReceta);
     }
 
-    public void imprimir(GuardaReceta receta) {
+    public void imprimir(Receta receta) {
     }
 
     public ResponseEntity<byte[]> imprimir(String receta) throws IOException {
@@ -129,12 +118,47 @@ public class RecetaService {
                 .body(Files.readAllBytes(Paths.get(new ClassPathResource("static/pdf/print-full.pdf").getURI())));
     }
 
-    public List<String> obtenerIngredientes() {
-        return ingredienteRepository.getNombreAll() ;
-    }
-
     public List<String> obtenerCategorias() {
         return categoriaRepository.getDescripcionAll() ;
     }
 
+    public Set<Receta> getRecetasByUsuario(Long id) {
+        return recetaRepository.findByIdUsuario(id) ;
+    }
+
+    public List<Receta> obtenerRecetas() {
+          List<Receta> recetas = new ArrayList<>();
+          recetaRepository.findAll().forEach(recetas::add);
+        return recetas;
+    }
+
+    public Receta obtenerRecetaRecomendada(Long usuarioId, List<Ingrediente> ingredientes) throws Exception {
+
+        Receta recetaRecomendada = null;
+
+        // Receta receta = recetaService.obtenerRecetaPorIngredientes(List.of("Tomate"));
+        List<Receta> allRecipes = obtenerRecetas();
+        Set<Receta> likedRecipes = getRecetasByUsuario(usuarioId);
+
+        // Instances instances = recetaBayesService.trainModel(allRecipes, likedRecipes, ingredientes);
+
+        recetaBayesService.entrenar(allRecipes, likedRecipes, ingredientes);
+
+        for (Receta receta : allRecipes) {
+            if (!likedRecipes.contains(receta)) {
+                // TrainingRecord record = ;
+                recetaRecomendada = recetaBayesService.predecirReceta(ingredientes, receta);
+                //System.out.println(record);
+            }
+
+            if( recetaRecomendada != null ) break;
+        }
+        // recetaBayesService.predecirReceta(allRecipes, likedRecipes, ingredientes, allRecipes.get(allRecipes.size()-1));
+
+        return recetaRecomendada;
+    }
+
+    public List<Receta> obtenerMisRecetas(Long usuarioId) {
+        return recetaRepository.obtenerMisRecetasPorUsuario(usuarioId);
+    }
 }

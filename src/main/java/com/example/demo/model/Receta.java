@@ -3,6 +3,8 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "Receta")
@@ -21,6 +23,9 @@ public class Receta implements Serializable {
     private String tipoDeReceta;
     @Column(name = "usuario_que_la_creo")
     private String usuarioQueLaCreo;
+
+    @OneToMany(mappedBy = "receta")
+    private Set<RecetaIngrediente> recetaIngredientes;
 
     public Receta() {
     }
@@ -90,6 +95,12 @@ public class Receta implements Serializable {
 
     public void setUsuarioQueLaCreo(String usuarioQueLaCreo) {
         usuarioQueLaCreo = usuarioQueLaCreo;
+    }
+
+    public Set<Ingrediente> getRecetaIngredientes() {
+        return recetaIngredientes.stream()
+                .map(RecetaIngrediente::getIngrediente)
+                .collect(Collectors.toSet());
     }
 
     @Override

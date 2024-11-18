@@ -15,7 +15,7 @@
 <div th:replace="~{fragments/navbar :: navbar}"></div>
 
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Formulario de Alta de Curso</h2>
+    <h1 class="text-center mb-4" style="color: #4CAF50;">Formulario de Alta de Curso</h1>
     <form id="cursoForm" method="POST" th:object="${curso}" th:action="@{/cursos/alta-curso}" onsubmit="submitForm(event, 'cursoForm')">
         <!-- Nombre del Curso -->
         <div class="form-group">
