@@ -15,19 +15,19 @@ public class Ingrediente implements Serializable {
     private String nombre;
     private String categoria;
     @Column(name = "valor_nutricional")
-    private Long valorNutricional;
+    private String valorNutricional;
 
     public Ingrediente(){
     }
 
-    public Ingrediente(Long ingrediente, String nombre, String categoria, Long valorNutricional) {
+    public Ingrediente(Long ingrediente, String nombre, String categoria, String valorNutricional) {
         this.ingrediente = ingrediente;
         this.nombre = nombre;
         this.categoria = categoria;
         this.valorNutricional = valorNutricional;
     }
 
-    public Long getIngrediente() {
+    public Long getId() {
         return ingrediente;
     }
 
@@ -51,11 +51,11 @@ public class Ingrediente implements Serializable {
         this.categoria = categoria;
     }
 
-    public Long getValorNutricional() {
+    public String getValorNutricional() {
         return valorNutricional;
     }
 
-    public void setValorNutricional(Long valorNutricional) {
+    public void setValorNutricional(String valorNutricional) {
         this.valorNutricional = valorNutricional;
     }
 }
