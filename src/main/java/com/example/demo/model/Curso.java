@@ -4,6 +4,11 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name ="curso")
@@ -19,6 +24,9 @@ public class Curso implements Serializable {
     @Column(name="id_profesional")
     private Long profesional;
     private String estado;
+
+    @OneToMany(mappedBy = "curso")
+    private Set<FechaCurso> fechaCursos;
 
     public Curso() {
     }
@@ -69,4 +77,13 @@ public class Curso implements Serializable {
     public void setEstado(String estado){
         this.estado = estado;
     }
+
+    public Set<String> getFecha() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+
+        return fechaCursos.stream()
+                .map(fechaCurso -> fechaCurso.getFecha().format(formatter))
+                .collect(Collectors.toSet());
+    }
+
 }

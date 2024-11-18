@@ -5,6 +5,8 @@ import com.example.demo.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CursoService {
 
@@ -15,4 +17,11 @@ public class CursoService {
         cursoRepository.save(curso);
     }
 
+    public List<Curso> obtenerCursosDisponibles() {
+        return (List<Curso>) cursoRepository.findAll();
+    }
+
+    public List<Curso> obtenerMisCursos(Long usuarioId) {
+        return cursoRepository.obtenerCursosPorUsuarioId(usuarioId);
+    }
 }
