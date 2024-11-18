@@ -21,24 +21,27 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recetas</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" th:href="@{/recetas/arma-receta}">Recomendaciones</a>
-                            <div sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
+                            <div sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_DOCENTE')">
                                 <a class="dropdown-item" th:href="@{/recetas/mis-recetas}">Mis recetas</a>
                                 <!--<a class="dropdown-item" >Mis pedidos</a>-->
                             </div>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <div sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
+                        <div sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_DOCENTE')">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cursos</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" th:href="@{/cursos/alta-curso}">Alta Curso</a>
+                            <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_DOCENTE')">
+                                <a class="dropdown-item" th:href="@{/cursos/alta-curso}">Alta Curso</a>
+                            </div>
                             <a class="dropdown-item" th:href="@{/cursos/curso}">Ver Cursos</a>
+                            <a class="dropdown-item" th:href="@{/cursos/mis-cursos}">Mis Cursos</a>
                             <!-- <a class="dropdown-item">Gestion Curso</a> -->
                         </div>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <div sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
+                        <div sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_DOCENTE')">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Turnos</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" th:href="@{/turnos/turno}">Mis Turnos</a>
