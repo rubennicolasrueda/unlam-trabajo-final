@@ -36,6 +36,9 @@ public class Usuario implements Serializable {
     @Column(name="fecha_baja")
     private LocalDate fechaBaja;
 
+    @OneToOne(mappedBy = "usuario")
+    private Profesional profesional;
+
     public Usuario() {
     }
 
