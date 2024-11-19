@@ -3,25 +3,40 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
-@Table(name ="Profesional")
+@Table(name ="profesional")
 public class Profesional implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private java.lang.Long id;
+    @Column(name = "id_profesional")
+    private Long id;
     private String especialidad;
+
+    @Column(name = "servicios_disponibles")
     private String serviciosDisponibles;
-    private java.lang.Long tarifa;
+    private BigDecimal tarifa;
+
+    @Column(name = "historial_de_usuarios")
     private String historialDeUsuariosAtendidos;
+
+    @Column(name = "planes_dieteticos_asignados")
     private String planesDieteticosAsignados;
-    private Long usuario;
+
+    @OneToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
+
+    @OneToMany(mappedBy = "profesional")
+    private Set<ConsultaProfesional> consultaProfesional;
 
     public Profesional() {
     }
 
-    public Profesional(java.lang.Long id, String especialidad, String serviciosDisponibles, java.lang.Long tarifa, String historialDeUsuariosAtendidos, String planesDieteticosAsignados, Long usuario) {
+    public Profesional(Long id, String especialidad, String serviciosDisponibles, BigDecimal tarifa, String historialDeUsuariosAtendidos, String planesDieteticosAsignados, Usuario usuario) {
         this.id = id;
         this.especialidad = especialidad;
         this.serviciosDisponibles = serviciosDisponibles;
@@ -55,11 +70,11 @@ public class Profesional implements Serializable {
         this.serviciosDisponibles = serviciosDisponibles;
     }
 
-    public java.lang.Long getTarifa() {
+    public BigDecimal getTarifa() {
         return tarifa;
     }
 
-    public void setTarifa(java.lang.Long tarifa) {
+    public void setTarifa(BigDecimal tarifa) {
         this.tarifa = tarifa;
     }
 
@@ -79,11 +94,11 @@ public class Profesional implements Serializable {
         this.planesDieteticosAsignados = planesDieteticosAsignados;
     }
 
-    public Long getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Long usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 }

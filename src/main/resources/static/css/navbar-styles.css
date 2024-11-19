@@ -8,3 +8,6 @@
 .navbar-nav .nav-link:hover {
     color: #FFC107; /* Yellow on hover */
 }
+.rounded-logo {
+    border-radius: 50%;
+}

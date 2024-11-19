@@ -79,7 +79,7 @@ public class Curso implements Serializable {
     }
 
     public Set<String> getFecha() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a");
 
         return fechaCursos.stream()
                 .map(fechaCurso -> fechaCurso.getFecha().format(formatter))
