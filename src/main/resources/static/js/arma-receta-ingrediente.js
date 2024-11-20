@@ -60,6 +60,7 @@ function updateTable(recetas) {
                     <td>${receta.descripcion}</td>
                     <td>${receta.valorNutricional}</td>
                     <td>${receta.tipoDeReceta}</td>
+                    <td><a onclick="alert('Se implementará próximamente.')" class="btn btn-success">Guardar</a></td>
                 </tr>
             `;
             tableBody.innerHTML += row;
