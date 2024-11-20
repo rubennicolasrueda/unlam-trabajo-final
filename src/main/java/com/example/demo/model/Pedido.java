@@ -4,9 +4,12 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
-@Table(name="Pedido")
+@Table(name="pedido")
 public class Pedido implements Serializable {
 
     @Id
@@ -17,9 +20,17 @@ public class Pedido implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
+
+    @Column(name = "fecha_alta")
     private LocalDate fechaAlta;
+
+    @Column(name = "fecha_actualizacion")
     private LocalDate fechaActualizacion;
+
     private String estado;
+
+    @OneToMany(mappedBy = "pedido")
+    private Set<PedidoIngrediente> pedidoIngredientes;
 
     public Pedido(){
     }
@@ -42,16 +53,19 @@ public class Pedido implements Serializable {
     public void setUsuario(Usuario usuario){
         this.usuario = usuario;
     }
-    public LocalDate getFechaAlta(){
-        return fechaAlta;
+    public String getFechaAlta(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return fechaAlta.format(formatter);
     }
     public void setFechaAlta(LocalDate fechaAlta){
         this.fechaAlta = fechaAlta;
     }
 
-    public LocalDate getFechaActualizacion() {
-        return fechaActualizacion;
+    public String getFechaActualizacion() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return fechaActualizacion.format(formatter);
     }
+
     public void setFechaActualizacion(LocalDate fechaActualizacion){
         this.fechaActualizacion = fechaActualizacion;
     }
@@ -61,5 +75,11 @@ public class Pedido implements Serializable {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Set<Ingrediente> getIngredientes() {
+        return pedidoIngredientes.stream()
+                .map(PedidoIngrediente::getIngrediente)
+                .collect(Collectors.toSet());
     }
 }

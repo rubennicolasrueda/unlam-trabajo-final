@@ -83,8 +83,17 @@ public class RecetaController {
 
     @GetMapping("/mis-pedidos")
     public String misPedidos(Model model){
+        Long usuarioId = usuarioService.obtenerUsuario();
+        model.addAttribute("pedidos", recetaService.obtenerMisPedidos(usuarioId));
+        return "perfil-usuario/mis-pedidos";
+    }
 
-        //model.addAttribute("pedidos",  );
+    @PostMapping("/mis-pedidos/agregar-pedido")
+    public String agregarAPedido(Model model, @RequestParam Long id){
+        Receta receta = recetaService.obtenerRecetaPorId(id);
+        Long usuarioId = usuarioService.obtenerUsuario();
+        recetaService.agregarIngredientesAlPedido(usuarioId, receta.getRecetaIngredientes());
+        System.out.println("PEDIDO AGREGADO");
         return "perfil-usuario/mis-pedidos";
     }
 

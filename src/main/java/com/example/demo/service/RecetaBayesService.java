@@ -21,7 +21,7 @@ public class RecetaBayesService {
     public void entrenar(List<Receta> allRecipes, Set<Receta> likedRecipes, List<Ingrediente> ingredientes) throws Exception {
 
         List<TrainingRecord> trainingRecords = getTrainingRecords(allRecipes, likedRecipes, ingredientes);
-        trainingRecords.forEach(System.out::println);
+        //trainingRecords.forEach(System.out::println);
         trainInstances = buildInstance(trainingRecords);
 
         classifier = new NaiveBayes();
@@ -58,7 +58,7 @@ public class RecetaBayesService {
             recetaRecomendada = receta;
         }
 
-        System.out.println("Recipe ID: " + receta.getTitulo() + ", Predicted liked status: " + predictedLabel);
+        //System.out.println("Recipe ID: " + receta.getTitulo() + ", Predicted liked status: " + predictedLabel);
         return recetaRecomendada;
     }
 
@@ -142,7 +142,7 @@ public class RecetaBayesService {
 
         for (Map.Entry<String, Integer> ingrediente : trainingSet.get(0).getIngredientPresence().entrySet()) {
             attributes.add(new Attribute(ingrediente.getKey()));
-            System.out.println( "ingrediente KEY " + ingrediente.getKey());
+            // System.out.println( "ingrediente KEY " + ingrediente.getKey());
         }
 
         // Define 'liked' as a nominal attribute
@@ -151,7 +151,7 @@ public class RecetaBayesService {
         likedLabels.add("1"); // Liked
         attributes.add(new Attribute("liked",likedLabels));
 
-        attributes.forEach(System.out::println);
+        //attributes.forEach(System.out::println);
 
         Instances dataSet = new Instances("Recetas", attributes, trainingSet.size());
         dataSet.setClassIndex(dataSet.numAttributes() - 1); // Set 'liked' as the class attribute
@@ -169,11 +169,11 @@ public class RecetaBayesService {
             for (Map.Entry<String, Integer> ingrediente : record.getIngredientPresence().entrySet()) {
                 //values[1 + indx] = ingrediente.getValue(); // +1 offset for userId and recipeId
                 values[indx] = ingrediente.getValue(); // +1 offset for userId and recipeId
-                System.out.println(indx + " VALUES ING " + values[indx]);
+                // System.out.println(indx + " VALUES ING " + values[indx]);
                 ++indx;
             }
             values[attributes.size() - 1] = record.getLiked() == 1 ? 1.0 : 0.0;
-            System.out.println(indx + " VALUES LIKE " + values[attributes.size() - 1]);
+            // System.out.println(indx + " VALUES LIKE " + values[attributes.size() - 1]);
 
             dataSet.add(new DenseInstance(1.0, values));
 

@@ -21,9 +21,9 @@
             <table id="myOrders" class="table table-bordered">
                     <thead>
                     <tr>
-                        <th> Nro Orden </th>
+                        <th> Nro. orden </th>
                         <th> Fecha de alta </th>
-                        <th> Receta </th>
+                        <th> Fecha última actualización </th>
                         <th> Ingredientes </th>
                         <th> Estado </th>
                     </tr>
@@ -33,10 +33,14 @@
                         <td colspan="5"> Aún no hay pedidos. </td>
                     </tr>
                     <tr th:each="pedido : ${pedidos}">
-                        <td><span th:text="${pedido.idOrden}"></span></td>
+                        <td><span th:text="${pedido.id}"></span></td>
                         <td><span th:text="${pedido.fechaAlta}"></span></td>
-                        <td><span th:text="${pedido.recetaTitulo}"></span></td>
-                        <td><span th:text="${pedido.ingredientes}"></span></td>
+                        <td><span th:text="${pedido.fechaActualizacion}"></span></td>
+                        <td>
+                        <span th:each="ingrediente : ${pedido.ingredientes}">
+                        <span th:text="${ingrediente.nombre}"></span><br>
+                        </span>
+                        </td>
                         <td><span th:text="${pedido.estado}"></span></td>
                     </tr>
                     </tbody>

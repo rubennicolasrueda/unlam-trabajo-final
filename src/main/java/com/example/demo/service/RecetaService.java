@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dto.RecetaSemana;
 import com.example.demo.model.*;
 import com.example.demo.repository.CategoriaRepository;
+import com.example.demo.repository.PedidoRepository;
 import com.example.demo.repository.RecetaRepository;
 import com.example.demo.repository.RecomendacionRecetaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class RecetaService {
 
     @Autowired
     private RecetaRepository recetaRepository;
+
+    @Autowired
+    private PedidoRepository pedidoRepository;
 
     @Autowired
     private RecomendacionRecetaRepository recomendacionRecetaRepository;
@@ -160,5 +164,24 @@ public class RecetaService {
 
     public List<Receta> obtenerMisRecetas(Long usuarioId) {
         return recetaRepository.obtenerMisRecetasPorUsuario(usuarioId);
+    }
+
+    public Object obtenerMisPedidos(Long usuarioId) {
+        return pedidoRepository.obtenerMisPedidos(usuarioId);
+    }
+
+    public Receta obtenerRecetaPorId(Long id) {
+        return recetaRepository.findById(id).orElse(null);
+    }
+
+    public void agregarIngredientesAlPedido(Long usuarioId, Set<Ingrediente> recetaIngredientes) {
+
+        if(isPedidoPendienteExist(usuarioId)){
+
+
+
+        } else {
+
+        }
     }
 }

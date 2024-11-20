@@ -19,7 +19,7 @@ public class PedidoIngrediente implements Serializable {
     private Ingrediente ingrediente;
 
     @ManyToOne
-    @JoinColumn(name = "id_ingrediente")
+    @JoinColumn(name = "id_pedido")
     private Pedido pedido;
 
     public PedidoIngrediente(){
