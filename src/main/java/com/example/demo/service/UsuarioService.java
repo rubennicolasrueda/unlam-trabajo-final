@@ -19,6 +19,10 @@ public class UsuarioService implements UserDetailsService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
+    public void altaUsuario(Usuario usuario) {
+        usuarioRepository.save(usuario);
+    }
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 

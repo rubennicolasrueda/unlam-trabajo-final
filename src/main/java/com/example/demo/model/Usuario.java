@@ -10,9 +10,10 @@ import java.time.LocalDate;
 public class Usuario implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_usuario")
     private Long id;
+
 
     @Column(name="nombre_completo")
     private String nombreCompleto;
