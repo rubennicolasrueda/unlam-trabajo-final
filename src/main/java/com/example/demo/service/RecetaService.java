@@ -176,6 +176,7 @@ public class RecetaService {
 
     public void agregarIngredientesAlPedido(Long usuarioId, Set<Ingrediente> recetaIngredientes) {
 
+        /*
         if(isPedidoPendienteExist(usuarioId)){
 
 
@@ -183,5 +184,7 @@ public class RecetaService {
         } else {
 
         }
+
+         */
     }
 }
