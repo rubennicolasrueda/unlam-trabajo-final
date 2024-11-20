@@ -22,12 +22,12 @@ async function submitForm(event, formId) {
         });
 
         if (response.ok) {
-            displayMessage('success', 'Form submitted successfully!');
+            displayMessage('success', 'Operación realizada exitosamente');
             form.reset(); // Clear form on success
         } else {
-            displayMessage('error', 'An error occurred while saving the form.');
+            displayMessage('error', 'Ha ocurrido un error al realizar la operación');
         }
     } catch (error) {
-        displayMessage('error', 'An unexpected error occurred.');
+        displayMessage('error', 'Ha ocurrido un error inesperado');
     }
 }

@@ -46,7 +46,7 @@
                 <!-- SELECCION MULTIPLE DE INGREDIENTES -->           
                 <!-- Botón de dropdown -->
 
-            <h2>Selecciona dos ingredientes o más</h2>
+            <h4>Selecciona dos ingredientes o más</h4>
             <div class="dropdown">
                     <button class="btn btn-success dropdown-toggle" type="button" id="categoriaDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         Ingredientes
@@ -81,17 +81,19 @@
                         <th> Descripcion </th>
                         <th> Valor nutricional </th>
                         <th> Tipo de receta </th>
+                        <th> Acción </th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:if="${recetas == null || recetas.isEmpty()}">
-                        <td colspan="4"> No hay recetas disponibles </td>
+                        <td colspan="5"> No hay recetas disponibles </td>
                     </tr>
                     <tr th:each="receta : ${recetas}">
                         <td><span th:text="${receta.titulo}"></span></td>
                         <td><span th:text="${receta.descripcion}"></span></td>
                         <td><span th:text="${receta.valorNutricional}"></span></td>
                         <td><span th:text="${receta.tipoDeReceta}"></span></td>
+                        <td><a onclick="alert('Se implementará próximamente.')" class="btn btn-success">Guardar</a></td>
                     </tr>
                     </tbody>
             </table>
@@ -99,7 +101,7 @@
         </div>
 
         <div class="row mt-3">
-            <h2>Selecciona una categoría de dieta</h2>
+            <h4>Selecciona una categoría de dieta</h4>
     
             <!-- Dropdown -->
             <div class="dropdown">
@@ -159,13 +161,13 @@
             <div class="col-4">
                 <!-- Video Responsivo -->
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="1903" height="784" src="https://www.youtube.com/embed/4lcbUfMKulk" title="¡Papas y carne de pollo!😉 ¡Haz esta deliciosa receta! ¡¡Cena adictiva!!👌" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="1903" height="784" src="https://www.youtube.com/embed/F6C90IXzFic" title="¡Papas y carne de pollo!😉 ¡Haz esta deliciosa receta! ¡¡Cena adictiva!!👌" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="col-4">
                 <!-- Video Responsivo -->
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="1903" height="784" src="https://www.youtube.com/embed/IwihxJo8t1Y" title="Mejor que la pizza. Simplemente ralla 3 calabacines frescos. Fácil, barato y delicioso😉👌." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="1903" height="784" src="https://www.youtube.com/embed/HzDbqRjD0Wk" title="Mejor que la pizza. Simplemente ralla 3 calabacines frescos. Fácil, barato y delicioso😉👌." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
