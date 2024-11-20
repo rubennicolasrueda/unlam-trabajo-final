@@ -93,7 +93,8 @@ public class RecetaController {
         Receta receta = recetaService.obtenerRecetaPorId(id);
         Long usuarioId = usuarioService.obtenerUsuario();
         recetaService.agregarIngredientesAlPedido(usuarioId, receta.getRecetaIngredientes());
-        System.out.println("PEDIDO AGREGADO");
+        model.addAttribute("pedidos", recetaService.obtenerMisPedidos(usuarioId));
+        // System.out.println("PEDIDO AGREGADO");
         return "perfil-usuario/mis-pedidos";
     }
 

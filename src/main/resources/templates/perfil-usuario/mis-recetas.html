@@ -43,7 +43,7 @@
                         <td><span th:text="${receta.valorNutricional}"></span></td>
                         <td><span th:text="${receta.tipoDeReceta}"></span></td>
                         <td>
-                            <form th:action="@{/recetas/mis-pedidos/agregar-pedido}" method="post">
+                            <form onclick="alert('Se implementará próximamente.')" th:action="@{/recetas/mis-pedidos/agregar-pedido}" method="post">
                                 <input type="hidden" name="id" th:value="${receta.id}" />
                                 <button type="submit" class="btn btn-success">Agregar a pedido</button>
                             </form>
@@ -65,7 +65,6 @@
                     <th> Descripcion </th>
                     <th> Valor nutricional </th>
                     <th> Tipo de receta </th>
-                    <th> Acción </th>
                 </tr>
                 </thead>
                 <tbody>

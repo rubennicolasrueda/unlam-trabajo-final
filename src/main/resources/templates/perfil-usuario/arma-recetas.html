@@ -132,9 +132,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr th:if="${recetas == null || recetas.isEmpty()}">
-                                <td colspan="8"> No hay recetas disponibles </td>
-                            </tr>
                             <tr th:each="recetaSemana : ${recetasSemana}">
                                 <td><span th:text="${recetaSemana.tipoComida}"></span></td>
                                 <td><span th:text="${recetaSemana.lunes}"></span></td>
