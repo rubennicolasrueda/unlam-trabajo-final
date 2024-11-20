@@ -11,15 +11,19 @@ public class Pedido implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private java.lang.Long id;
-    private Long usuario;
+    @Column(name = "id_pedido")
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
     private LocalDate fechaAlta;
     private LocalDate fechaActualizacion;
     private String estado;
 
     public Pedido(){
     }
-    public Pedido(java.lang.Long id, Long usuario, LocalDate fechaAlta, LocalDate fechaActualizacion, String estado){
+    public Pedido(java.lang.Long id, Usuario usuario, LocalDate fechaAlta, LocalDate fechaActualizacion, String estado){
         this.id = id;
         this.usuario = usuario;
         this.fechaAlta = fechaAlta;
@@ -32,10 +36,10 @@ public class Pedido implements Serializable {
     public void setId(java.lang.Long id){
         this.id = id;
     }
-    public Long getUsuario(){
+    public Usuario getUsuario(){
         return usuario;
     }
-    public void setUsuario(Long usuario){
+    public void setUsuario(Usuario usuario){
         this.usuario = usuario;
     }
     public LocalDate getFechaAlta(){

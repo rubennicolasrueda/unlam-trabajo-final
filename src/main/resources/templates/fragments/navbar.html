@@ -29,6 +29,7 @@
                             <a class="dropdown-item" th:href="@{/recetas/arma-receta}">Recomendaciones</a>
                             <div sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_DOCENTE')">
                                 <a class="dropdown-item" th:href="@{/recetas/mis-recetas}">Mis recetas</a>
+                                <a class="dropdown-item" th:href="@{/recetas/mis-pedidos}">Mis pedidos</a>
                             </div>
                         </div>
                     </li>

@@ -81,18 +81,12 @@ public class RecetaController {
         return "perfil-usuario/arma-recetas" ;
     }
 
-    /*
-    @GetMapping("/arma-receta-semana")
-    // public String obtenerRecetasSemana(Model model, @PathVariable String categoria) {
-    public String obtenerRecetasSemana() {
-        // List<Receta> receta = recetaService.obtenerRecetaPorCategoria(categoria);
-        List<Receta> recetas = recetaService.obtenerRecetasPorCategoria("Saludable");
-        System.out.println(recetas);
-        // model.addAttribute("recetas", receta);
-        return "perfil-usuario/arma-recetas" ;
-    }
+    @GetMapping("/mis-pedidos")
+    public String misPedidos(Model model){
 
-     */
+        //model.addAttribute("pedidos",  );
+        return "perfil-usuario/mis-pedidos";
+    }
 
     @PostMapping("/guarda-receta")
     public String guardarReceta(@RequestBody Receta receta) {

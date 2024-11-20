@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "pedido_ingrediente")
@@ -10,8 +11,15 @@ public class PedidoIngrediente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_pedido_ingrediente")
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ingrediente")
     private Ingrediente ingrediente;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ingrediente")
     private Pedido pedido;
 
     public PedidoIngrediente(){
